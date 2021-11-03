@@ -4,7 +4,7 @@
       <p class="prototype__hedding">
         <%= @prototypes.title%>
       </p>
-      <%= link_to "by #{@prototypes.user.name}", user_path(@prototypes), class: :prototype__user %>
+      <%= link_to "by #{@prototypes.user.name}", user_path(@prototypes.user.id), class: :prototype__user %>
       <% if user_signed_in? && current_user.id == @prototypes.user_id %>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_prototype_path(@prototypes), class: :prototype__btn %>
