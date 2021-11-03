@@ -4,10 +4,10 @@
       <p class="prototype__hedding">
         <%= @prototypes.title%>
       </p>
-      <%= link_to "by #{@prototypes.user.name}", user_path, class: :prototype__user %>
+      <%= link_to "by #{@prototypes.user.name}", user_path(@prototypes), class: :prototype__user %>
       <% if user_signed_in? && current_user.id == @prototypes.user_id %>
         <div class="prototype__manage">
-          <%= link_to "編集する", edit_prototype_path, class: :prototype__btn %>
+          <%= link_to "編集する", edit_prototype_path(@prototypes), class: :prototype__btn %>
           <%= link_to "削除する","/prototypes/#{@prototypes.id}", method: :delete, class: :prototype__btn %>
         </div>
       <% end %>
@@ -44,7 +44,7 @@
           <% @comments.each do |comment| %>
             <li class="comments_list">
               <%= comment.content %>
-             <%= link_to comment.user.name, user_path, class: :comment_user %>
+             <%= link_to comment.user.name, user_path(@prototypes), class: :comment_user %>
             </li>
           <% end %>
         </ul>
